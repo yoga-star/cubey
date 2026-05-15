@@ -106,13 +106,24 @@
     </section>
 
     <!-- 2. What is Cubey ============================================ -->
-    <section class="what" id="what">
-      <div class="container">
-        <header class="section-head">
-          <span class="section-label">01 — What it is</span>
-          <h2>Eggs, reimagined as a block.</h2>
-        </header>
+    <section class="what" id="what" aria-labelledby="what-heading">
+      <!-- Cinematic opener -->
+      <div class="what-hero">
+        <div class="what-hero-bg" aria-hidden="true">
+          <img src="images/what-2-cubing.jpg" alt="" width="1376" height="768" loading="lazy">
+        </div>
+        <div class="what-hero-overlay" aria-hidden="true"></div>
+        <div class="what-hero-grain" aria-hidden="true"></div>
 
+        <div class="what-hero-content">
+          <span class="section-label">01 — What it is</span>
+          <h2 id="what-heading" class="what-hero-heading">Eggs, reimagined as a block.</h2>
+          <p class="what-hero-sub">A solid block of cooked egg. Three ingredients deep. Slice it, cube it, drop it into anything you already cook.</p>
+        </div>
+      </div>
+
+      <!-- 3-panel detail strip -->
+      <div class="container what-panels-wrapper">
         <div class="what-grid">
           <figure class="what-panel">
             <img class="what-image" src="images/what-1-block.jpg" alt="A golden block of cooked Cubey egg on a worn wooden cutting board with a small bowl of flaky sea salt and a halved lemon beside it — the three ingredients on cream linen." width="1376" height="768" loading="lazy">
