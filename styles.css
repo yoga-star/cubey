@@ -1207,41 +1207,6 @@ img.persona-image {
   font-weight: 700;
 }
 
-/* Big stat moment inside the prologue */
-.prologue-stat-block {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 8px 0 4px;
-}
-.prologue-stat-intro,
-.prologue-stat-tail {
-  font-size: clamp(20px, 2.2vw, 28px);
-  font-weight: 600;
-  color: var(--bg);
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
-}
-.prologue-stat-num {
-  display: inline-block;
-  font-size: clamp(112px, 18vw, 220px);
-  font-weight: 800;
-  color: var(--bg);
-  letter-spacing: -0.05em;
-  line-height: 0.92;
-  text-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
-  margin: 4px 0;
-}
-.prologue-stat-plus {
-  color: var(--yolk);
-  font-size: 0.6em;
-  margin-left: 0.04em;
-  display: inline-block;
-  vertical-align: top;
-  margin-top: 0.05em;
-}
-
 /* Reduce motion: kill Ken Burns */
 @media (prefers-reduced-motion: reduce) {
   .prologue-bg img { animation: none; }
