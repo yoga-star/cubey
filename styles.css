@@ -466,6 +466,16 @@ main > section {
 
 .why-image { position: sticky; top: 100px; }
 @media (max-width: 959px) { .why-image { position: static; } }
+.why-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-card);
+  display: block;
+  background: var(--bg-soft);
+  box-shadow: var(--shadow-card);
+}
 
 .why-headline {
   margin-bottom: 36px;
