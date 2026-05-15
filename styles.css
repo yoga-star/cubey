@@ -905,6 +905,18 @@ img.persona-image {
 .img-frame--square { aspect-ratio: 1 / 1; }
 .img-frame--tall { aspect-ratio: 4 / 5; }
 
+/* "What is Cubey" panels — landscape to match AI source aspect */
+.what-panel .img-frame { aspect-ratio: 4 / 3; }
+.what-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-card);
+  display: block;
+  background: var(--bg-soft);
+}
+
 /* =============================================================
    FOOTER
    ============================================================= */
