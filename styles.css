@@ -955,7 +955,7 @@ img.persona-image {
 .what-panel .img-frame,
 .what-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 2 / 1;
   border-radius: 0;
   display: block;
   background: var(--bg-soft);
