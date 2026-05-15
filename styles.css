@@ -448,13 +448,97 @@ main > section {
   background:
     linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
 }
+/* Why section — split-screen cinematic (image + dark text panel) */
+.why {
+  padding: 0 !important;
+  background: var(--text);
+}
 .why-layout {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+@media (min-width: 880px) {
+  .why-layout {
+    grid-template-columns: 1fr 1.05fr;
+    min-height: 90vh;
+    min-height: 90dvh;
+  }
+}
+.why-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 50vh;
+  background: var(--text);
+  isolation: isolate;
+}
+@media (min-width: 880px) {
+  .why-image { min-height: auto; }
+}
+.why-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 55%;
+  animation: why-img-pan 26s ease-in-out infinite alternate;
+  will-change: transform;
+  z-index: 0;
+}
+.why-image-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(43,31,20,0.10) 0%, rgba(43,31,20,0.55) 100%),
+    linear-gradient(90deg, transparent 60%, rgba(43,31,20,0.6) 100%);
+}
+@keyframes why-img-pan {
+  from { transform: scale(1.04) translate(0, 0); }
+  to   { transform: scale(1.10) translate(-1.5%, -1%); }
 }
 .why-content {
-  max-width: 760px;
-  width: 100%;
+  padding: 64px var(--container-px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--bg);
+  background: var(--text);
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .why-content { padding: 96px 56px; }
+}
+@media (min-width: 1280px) {
+  .why-content { padding: 112px 80px; max-width: 720px; }
+}
+
+/* Dark-mode overrides for the existing children */
+.why-content .section-label { color: var(--yolk); }
+.why-content .why-headline {
+  color: var(--bg);
+  font-size: clamp(26px, 3.4vw, 40px);
+  margin-bottom: 28px;
+}
+.why-content .stat-big {
+  color: var(--bg);
+  font-size: clamp(80px, 13vw, 152px);
+}
+.why-content .stat-plus { color: var(--yolk); }
+.why-content .stat-tail {
+  color: var(--bg);
+  font-size: clamp(18px, 2vw, 24px);
+}
+.why-content .why-body p { color: rgba(250, 247, 240, 0.82); }
+.why-content .signature { color: var(--yolk); }
+.why-content .signature::before { background: var(--yolk); }
+
+@media (prefers-reduced-motion: reduce) {
+  .why-image img { animation: none; }
 }
 
 .why-headline {
