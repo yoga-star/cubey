@@ -1337,11 +1337,6 @@ img.persona-image {
   }
 }
 .prologue-eyebrow {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--yolk);
   display: inline-flex;
   align-items: center;
   gap: 14px;
@@ -1352,6 +1347,16 @@ img.persona-image {
   width: 36px;
   height: 1px;
   background: var(--yolk);
+  flex-shrink: 0;
+}
+.prologue-eyebrow-text {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--yolk);
+  padding: 7px 14px;
 }
 .prologue-lead {
   font-size: clamp(32px, 6vw, 72px);
