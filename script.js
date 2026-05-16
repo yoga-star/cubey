@@ -223,9 +223,7 @@
       });
     });
 
-    // Pause on hover / focus, resume on leave
-    slideshow.addEventListener('mouseenter', stopAuto);
-    slideshow.addEventListener('mouseleave', startAuto);
+    // Pause briefly while a control is focused, resume on blur
     slideshow.addEventListener('focusin', stopAuto);
     slideshow.addEventListener('focusout', startAuto);
 
