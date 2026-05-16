@@ -545,7 +545,7 @@ main > section {
   background:
     linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
 }
-/* Why section — clean text-only, anchored by the 183+ stat */
+/* Why section — clean text-only, anchored by the founder story */
 .why {
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
 }
@@ -556,6 +556,65 @@ main > section {
 .why-content {
   max-width: 780px;
   width: 100%;
+}
+.why-content .why-headline {
+  margin-bottom: 32px;
+}
+.founder-name {
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.why-body p {
+  font-size: clamp(17px, 1.4vw, 19px);
+  line-height: 1.6;
+}
+
+/* Founder pull-quote callout — dark card with yolk emphasis */
+.founder-quote {
+  margin-top: 48px;
+  background: var(--text);
+  color: var(--bg);
+  padding: 32px 28px;
+  border-radius: var(--radius-card);
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+@media (min-width: 768px) {
+  .founder-quote {
+    padding: 44px 40px;
+    margin-top: 56px;
+  }
+}
+.founder-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -22px;
+  left: 24px;
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--yolk);
+  letter-spacing: -0.05em;
+}
+.founder-quote p {
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--bg);
+  margin: 0 0 20px;
+}
+.founder-quote em {
+  color: var(--yolk);
+  font-style: italic;
+  font-weight: 800;
+}
+.founder-quote footer {
+  font-size: 13px;
+  color: var(--yolk);
+  font-weight: 600;
+  letter-spacing: 0.06em;
 }
 
 .why-headline {
