@@ -253,53 +253,66 @@
       <div class="container">
         <header class="section-head">
           <span class="section-label">03 — How you'll cook it</span>
-          <h2>Six ways to put a pack to work.</h2>
-          <p class="section-intro">Open any recipe to see how it comes together.</p>
+          <h2>Three ways to put a pack to work.</h2>
+          <p class="section-intro">Tap any slide to see the full recipe.</p>
         </header>
 
-        <div class="recipe-grid">
-          <a href="recipes/egg-curry.html" class="recipe-card">
-            <div class="recipe-image" aria-hidden="true"><span class="recipe-num">01</span></div>
-            <div class="recipe-body">
-              <h3>Cubey Egg Curry</h3>
-              <p class="recipe-meta">8 cubes · 15 min · serves 2</p>
+        <div class="recipe-slideshow" data-slideshow data-autoplay="4500" role="region" aria-roledescription="carousel" aria-label="Recipe ideas">
+
+          <div class="recipe-slide is-active" data-slide-index="0" aria-roledescription="slide" aria-label="Recipe 1 of 3">
+            <a class="recipe-slide-link" href="recipes/egg-curry.html" aria-label="Open Cubey Egg Curry recipe">
+              <span class="recipe-slide-num" aria-hidden="true">01</span>
+              <div class="recipe-slide-overlay" aria-hidden="true"></div>
+              <div class="recipe-slide-content">
+                <span class="recipe-slide-step">Recipe&nbsp;01&nbsp;/&nbsp;03</span>
+                <h3 class="recipe-slide-title">Cubey Egg Curry</h3>
+                <p class="recipe-slide-meta">8 cubes · 15 min · serves 2</p>
+                <span class="recipe-slide-cta">View recipe&nbsp;→</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="recipe-slide" data-slide-index="1" aria-roledescription="slide" aria-label="Recipe 2 of 3" aria-hidden="true">
+            <a class="recipe-slide-link" href="recipes/fried-rice.html" aria-label="Open Cubey Fried Rice recipe">
+              <span class="recipe-slide-num" aria-hidden="true">02</span>
+              <div class="recipe-slide-overlay" aria-hidden="true"></div>
+              <div class="recipe-slide-content">
+                <span class="recipe-slide-step">Recipe&nbsp;02&nbsp;/&nbsp;03</span>
+                <h3 class="recipe-slide-title">Cubey Fried Rice</h3>
+                <p class="recipe-slide-meta">6 cubes · 8 min · serves 2</p>
+                <span class="recipe-slide-cta">View recipe&nbsp;→</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="recipe-slide" data-slide-index="2" aria-roledescription="slide" aria-label="Recipe 3 of 3" aria-hidden="true">
+            <a class="recipe-slide-link" href="recipes/salad.html" aria-label="Open Cubey Salad Bowl recipe">
+              <span class="recipe-slide-num" aria-hidden="true">03</span>
+              <div class="recipe-slide-overlay" aria-hidden="true"></div>
+              <div class="recipe-slide-content">
+                <span class="recipe-slide-step">Recipe&nbsp;03&nbsp;/&nbsp;03</span>
+                <h3 class="recipe-slide-title">Cubey Salad Bowl</h3>
+                <p class="recipe-slide-meta">4 cubes · 3 min · serves 1</p>
+                <span class="recipe-slide-cta">View recipe&nbsp;→</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="recipe-slide-progress" data-slide-progress aria-hidden="true">
+            <div class="recipe-slide-progress-bar"></div>
+          </div>
+
+          <div class="recipe-slide-controls">
+            <div class="recipe-slide-dots" role="tablist" aria-label="Choose a recipe">
+              <button class="recipe-slide-dot is-active" data-slide-go="0" aria-label="Recipe 1" aria-selected="true" type="button"></button>
+              <button class="recipe-slide-dot" data-slide-go="1" aria-label="Recipe 2" aria-selected="false" type="button"></button>
+              <button class="recipe-slide-dot" data-slide-go="2" aria-label="Recipe 3" aria-selected="false" type="button"></button>
             </div>
-          </a>
-          <a href="recipes/dal-tadka.html" class="recipe-card">
-            <div class="recipe-image" aria-hidden="true"><span class="recipe-num">02</span></div>
-            <div class="recipe-body">
-              <h3>Dal with Cubey Tadka</h3>
-              <p class="recipe-meta">4 cubes · 10 min · serves 2</p>
-            </div>
-          </a>
-          <a href="recipes/fried-rice.html" class="recipe-card">
-            <div class="recipe-image" aria-hidden="true"><span class="recipe-num">03</span></div>
-            <div class="recipe-body">
-              <h3>Cubey Fried Rice</h3>
-              <p class="recipe-meta">6 cubes · 8 min · serves 2</p>
-            </div>
-          </a>
-          <a href="recipes/sandwich.html" class="recipe-card">
-            <div class="recipe-image" aria-hidden="true"><span class="recipe-num">04</span></div>
-            <div class="recipe-body">
-              <h3>Cubey Sandwich</h3>
-              <p class="recipe-meta">4 cubes · 5 min · serves 1</p>
-            </div>
-          </a>
-          <a href="recipes/biryani.html" class="recipe-card">
-            <div class="recipe-image" aria-hidden="true"><span class="recipe-num">05</span></div>
-            <div class="recipe-body">
-              <h3>Cubey Biryani Topper</h3>
-              <p class="recipe-meta">8 cubes · 10 min · serves 2</p>
-            </div>
-          </a>
-          <a href="recipes/salad.html" class="recipe-card">
-            <div class="recipe-image" aria-hidden="true"><span class="recipe-num">06</span></div>
-            <div class="recipe-body">
-              <h3>Cubey Salad Bowl</h3>
-              <p class="recipe-meta">4 cubes · 3 min · serves 1</p>
-            </div>
-          </a>
+            <button class="recipe-slide-next" data-slide-next aria-label="Next recipe" type="button">
+              <span aria-hidden="true">Next&nbsp;<span class="recipe-slide-next-arrow">→</span></span>
+            </button>
+          </div>
+
         </div>
       </div>
     </section>

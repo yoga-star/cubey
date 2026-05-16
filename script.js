@@ -144,19 +144,20 @@
     }, 1600);
   }
 
-  /* ---------- "What it is" slideshow ---------- */
-  const slideshow = document.querySelector('[data-slideshow]');
-  if (slideshow) {
-    const slides = Array.from(slideshow.querySelectorAll('.what-slide'));
+  /* ---------- Slideshows (auto-advancing carousels) ---------- */
+  document.querySelectorAll('[data-slideshow]').forEach(initSlideshow);
+
+  function initSlideshow(slideshow) {
+    const slides = Array.from(slideshow.querySelectorAll('[data-slide-index]'));
     const dots = Array.from(slideshow.querySelectorAll('[data-slide-go]'));
     const nextBtn = slideshow.querySelector('[data-slide-next]');
     const progressBar = slideshow.querySelector('[data-slide-progress] > *');
     const autoplayMs = parseInt(slideshow.dataset.autoplay, 10) || 3800;
 
+    if (!slides.length) return;
+
     let current = 0;
     let autoTimer = null;
-    let progressTimer = null;
-    let progressStart = 0;
 
     function setActive(index) {
       const next = ((index % slides.length) + slides.length) % slides.length;
@@ -189,7 +190,6 @@
 
     function startAuto() {
       stopAuto();
-      progressStart = Date.now();
       resetProgress();
       autoTimer = window.setTimeout(function tick() {
         setActive(current + 1);
