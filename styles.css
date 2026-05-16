@@ -1238,6 +1238,16 @@ img.persona-image {
   color: var(--text-muted);
   margin-top: 4px;
 }
+.form-error {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--terracotta);
+  margin-top: 8px;
+  padding: 12px 16px;
+  background: rgba(201, 123, 92, 0.10);
+  border-radius: var(--radius-input);
+}
 
 .thank-you {
   text-align: center;

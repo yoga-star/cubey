@@ -70,15 +70,15 @@
     document.querySelectorAll('.fade-up').forEach((el) => el.classList.add('in-view'));
   }
 
-  /* ---------- Form submission ----------
-     In production (Wix Studio): replace this handler with Wix Forms
-     integration. The data shape below is what gets emailed to the founder.
+  /* ---------- Form submission (Web3Forms) ----------
+     Form POSTs to https://api.web3forms.com/submit with the access_key
+     hidden field. Submissions arrive in yogamn45@gmail.com inbox.
   ----------------------------------------- */
   const form = document.getElementById('cubey-form');
   const thankYou = document.querySelector('.thank-you');
 
   if (form && thankYou) {
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       // Optional email format check (only if user entered something)
@@ -89,36 +89,68 @@
         return;
       }
 
-      // Collect data
-      const data = Object.fromEntries(new FormData(form).entries());
-      data.submitted_at = new Date().toISOString();
-      data.user_agent = navigator.userAgent;
+      const submitBtn = form.querySelector('.submit-btn');
+      const originalLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+      }
 
-      // For development / demo: log + persist locally so nothing is lost
-      console.log('[Cubey] feedback submission:', data);
+      // Build FormData (picks up access_key, subject, from_name, botcheck)
+      const formData = new FormData(form);
+      formData.append('submitted_at', new Date().toISOString());
+      formData.append('user_agent', navigator.userAgent);
+
+      // Local backup in case the network call fails
       try {
+        const data = Object.fromEntries(formData.entries());
         const key = 'cubey_submissions';
         const existing = JSON.parse(localStorage.getItem(key) || '[]');
         existing.push(data);
         localStorage.setItem(key, JSON.stringify(existing));
-      } catch (_e) { /* ignore quota */ }
+      } catch (_e) { /* quota — ignore */ }
 
-      // GA4 + Meta Pixel event hooks (no-op if not loaded)
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'feedback_submitted', {
-          existence_reaction: data.existence_reaction,
-          name_reaction: data.name_reaction,
-          would_try: data.try,
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
         });
-      }
-      if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Lead', { content_name: 'Cubey feedback form' });
-      }
+        const result = await response.json().catch(() => ({}));
 
-      // Show thank you
-      form.style.display = 'none';
-      thankYou.hidden = false;
-      thankYou.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (!response.ok || result.success === false) {
+          throw new Error(result.message || `HTTP ${response.status}`);
+        }
+
+        // GA4 + Meta Pixel event hooks (no-op if not loaded)
+        const data = Object.fromEntries(formData.entries());
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'feedback_submitted', {
+            existence_reaction: data.existence_reaction,
+            name_reaction: data.name_reaction,
+            would_try: data.try,
+          });
+        }
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', { content_name: 'Cubey feedback form' });
+        }
+
+        form.style.display = 'none';
+        thankYou.hidden = false;
+        thankYou.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        console.error('[Cubey] submission failed:', err);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+        let errorEl = form.querySelector('.form-error');
+        if (!errorEl) {
+          errorEl = document.createElement('p');
+          errorEl.className = 'form-error';
+          form.appendChild(errorEl);
+        }
+        errorEl.textContent = "Couldn't send right now. Please try again, or email yogamn45@gmail.com.";
+      }
     });
   }
 
