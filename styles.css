@@ -1154,6 +1154,21 @@ img.persona-image {
 @media (min-width: 480px) {
   .radio-group { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* Stacked variant for radio groups with longer phrase options */
+.radio-group--stacked {
+  grid-template-columns: 1fr !important;
+}
+@media (min-width: 560px) {
+  .radio-group--stacked {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+.radio-group--stacked .radio-option span {
+  text-align: left;
+  padding: 14px 16px;
+  line-height: 1.35;
+}
 .radio-option {
   position: relative;
   cursor: pointer;

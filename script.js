@@ -81,15 +81,6 @@
     form.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      // Validate required field(s)
-      const city = form.elements.namedItem('city');
-      if (city && !city.value.trim()) {
-        city.focus();
-        city.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        flashField(city);
-        return;
-      }
-
       // Optional email format check (only if user entered something)
       const emailInput = form.elements.namedItem('email');
       if (emailInput && emailInput.value && !isValidEmail(emailInput.value)) {
@@ -115,7 +106,7 @@
       // GA4 + Meta Pixel event hooks (no-op if not loaded)
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'feedback_submitted', {
-          city: data.city,
+          existence_reaction: data.existence_reaction,
           name_reaction: data.name_reaction,
           would_try: data.try,
         });

@@ -331,11 +331,6 @@
             <input type="text" id="name" name="name" autocomplete="name">
           </div>
 
-          <div class="field">
-            <label for="city">City <span class="meta meta--required">required</span></label>
-            <input type="text" id="city" name="city" required autocomplete="address-level2" placeholder="Bangalore, Hyderabad, …">
-          </div>
-
           <fieldset class="field field--radio">
             <legend>How often do you cook with eggs?</legend>
             <div class="radio-group">
@@ -353,6 +348,16 @@
               <label class="radio-option"><input type="radio" name="name_reaction" value="Like it"><span>Like it</span></label>
               <label class="radio-option"><input type="radio" name="name_reaction" value="Neutral"><span>Neutral</span></label>
               <label class="radio-option"><input type="radio" name="name_reaction" value="Don't like it"><span>Don't like it</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field field--radio">
+            <legend>When you found out an egg cube existed, your first reaction was&nbsp;—</legend>
+            <div class="radio-group radio-group--stacked">
+              <label class="radio-option"><input type="radio" name="existence_reaction" value="FINALLY. Someone did it."><span>"FINALLY. Someone did it."</span></label>
+              <label class="radio-option"><input type="radio" name="existence_reaction" value="Wait… why didn't this exist before?"><span>"Wait… why didn't this exist before?"</span></label>
+              <label class="radio-option"><input type="radio" name="existence_reaction" value="Interesting. Tell me more."><span>"Interesting. Tell me more."</span></label>
+              <label class="radio-option"><input type="radio" name="existence_reaction" value="I didn't know I needed this until right now."><span>"I didn't know I needed this until right now."</span></label>
             </div>
           </fieldset>
 
