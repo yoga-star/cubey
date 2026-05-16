@@ -1144,6 +1144,15 @@ img.persona-image {
   font-size: 13px;
   color: var(--text-muted);
 }
+.footer-disclaimer {
+  text-align: center;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted);
+  opacity: 0.6;
+  margin-top: 20px;
+  letter-spacing: 0.01em;
+}
 
 /* =============================================================
    FLOATING CTA
