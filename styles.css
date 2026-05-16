@@ -247,8 +247,13 @@ main > section {
 }
 .tagline em {
   font-style: normal;
-  color: var(--text);
-  font-weight: 600;
+  color: #FFFFFF;
+  font-weight: 700;
+  background: #E84B30;
+  padding: 4px 12px;
+  border-radius: 4px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 .hero-link {
