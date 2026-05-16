@@ -429,6 +429,91 @@ main > section {
   .insight-caption { letter-spacing: 0.22em; }
 }
 
+/* "Meet the founders" CTA inside the insight section */
+.insight-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: var(--bg);
+  color: var(--text);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  margin-top: 24px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  transition: background var(--t), transform var(--t), box-shadow var(--t);
+}
+.insight-cta:hover {
+  background: var(--yolk);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+.insight-cta:active { transform: translateY(0); }
+.insight-cta-arrow {
+  display: inline-block;
+  transition: transform var(--t);
+}
+.insight-cta:hover .insight-cta-arrow { transform: translateX(3px); }
+
+/* =============================================================
+   FOUNDERS PAGE
+   ============================================================= */
+body.founders-page { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%); }
+
+.founders-main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 100px var(--container-px) 80px;
+}
+@media (min-width: 1024px) {
+  .founders-main { padding: 120px var(--container-px) 96px; }
+}
+
+.founders-header {
+  margin-bottom: 40px;
+  max-width: 720px;
+}
+.founders-header h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  margin-top: 14px;
+}
+
+.founders-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+.founders-body p {
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.founders-article .founder-quote { margin-top: 48px; }
+
+.founders-cta {
+  margin-top: 72px;
+  padding: 48px 32px;
+  background: #FFFFFF;
+  border-radius: var(--radius-card);
+  text-align: center;
+  box-shadow: var(--shadow-card);
+}
+.founders-cta p {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 24px;
+  line-height: 1.3;
+}
+
 /* =============================================================
    2. WHAT IS CUBEY — slideshow (full-bleed image + text overlay)
    ============================================================= */
