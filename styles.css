@@ -300,6 +300,15 @@ main > section {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
+.tagline-sub {
+  display: inline-block;
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.45;
+  margin: 4px 0;
+  letter-spacing: -0.005em;
+}
 
 .hero-link {
   display: inline-flex;
