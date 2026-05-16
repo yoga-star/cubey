@@ -1144,17 +1144,20 @@ img.persona-image {
   font-size: 13px;
   color: var(--text-muted);
 }
-/* Founder-quote disclaimer (inside the dark card, under the signature) */
-.founder-quote-disclaimer {
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(250, 247, 240, 0.12);
-  font-size: 12px;
+/* Cheeky disclaimer below the founder-quote card — orange highlight */
+.disclaimer-wrap {
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 2;
+}
+.disclaimer-highlight {
+  background: #E84B30;
+  color: #FFFFFF;
   font-style: italic;
-  color: rgba(250, 247, 240, 0.45);
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 1.4;
+  font-weight: 700;
+  padding: 5px 12px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* =============================================================
