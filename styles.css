@@ -1639,6 +1639,29 @@ img.persona-image {
   line-height: 1.5;
 }
 
+/* Recipes section intro — two-paragraph pitch above the carousel */
+.recipe-pitch {
+  margin-top: 16px;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.recipe-pitch p {
+  font-size: clamp(16px, 1.3vw, 19px);
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.recipe-pitch strong {
+  color: var(--text);
+  font-weight: 700;
+}
+.recipe-pitch em {
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 700;
+}
+
 .recipe-slideshow {
   position: relative;
   width: 100%;
