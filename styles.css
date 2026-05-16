@@ -1144,14 +1144,17 @@ img.persona-image {
   font-size: 13px;
   color: var(--text-muted);
 }
-.footer-disclaimer {
-  text-align: center;
+/* Founder-quote disclaimer (inside the dark card, under the signature) */
+.founder-quote-disclaimer {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(250, 247, 240, 0.12);
   font-size: 12px;
   font-style: italic;
-  color: var(--text-muted);
-  opacity: 0.6;
-  margin-top: 20px;
-  letter-spacing: 0.01em;
+  color: rgba(250, 247, 240, 0.45);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
 }
 
 /* =============================================================
