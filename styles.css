@@ -520,7 +520,7 @@ body.founders-page { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-
 .what-slideshow {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 11;
   border-radius: var(--radius-card);
   overflow: hidden;
   isolation: isolate;
@@ -1642,7 +1642,7 @@ img.persona-image {
 .recipe-slideshow {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 11;
   border-radius: var(--radius-card);
   overflow: hidden;
   isolation: isolate;
