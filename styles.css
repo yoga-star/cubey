@@ -196,13 +196,16 @@ main > section {
 }
 .header-cta:hover { background: var(--yolk-dark); color: var(--text); }
 .header-cta:active { transform: scale(0.97); }
+.header-link-short { display: none; }
 @media (max-width: 720px) {
   .header-nav { gap: 8px; }
   .header-link { font-size: 13px; padding: 6px 2px; }
 }
 @media (max-width: 540px) {
-  .header-cta { padding: 8px 14px; font-size: 13px; }
-  .header-link { display: none; }
+  .header-cta { padding: 8px 12px; font-size: 12px; }
+  .header-link { font-size: 12px; padding: 6px 2px; }
+  .header-link-long { display: none; }
+  .header-link-short { display: inline; }
 }
 
 /* =============================================================
