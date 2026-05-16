@@ -430,89 +430,214 @@ main > section {
 }
 
 /* =============================================================
-   2. WHAT IS CUBEY — horizontal stacked panels
+   2. WHAT IS CUBEY — slideshow (full-bleed image + text overlay)
    ============================================================= */
-.what-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-@media (min-width: 768px) {
-  .what-grid { gap: 20px; margin-bottom: 56px; }
-}
-@media (min-width: 1024px) {
-  .what-grid { gap: 28px; margin-bottom: 64px; }
-}
-
-.what-panel {
-  background: #FFFFFF;
+.what-slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
   border-radius: var(--radius-card);
   overflow: hidden;
+  isolation: isolate;
+  margin-bottom: 40px;
+  background: var(--text);
   box-shadow: var(--shadow-card);
-  transition: transform var(--t), box-shadow var(--t);
-  display: grid;
-  grid-template-columns: 1fr;
-  position: relative;
 }
-.what-panel:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card-hover);
-}
-
-@media (min-width: 768px) {
-  .what-panel {
-    grid-template-columns: 1.15fr 1fr;
-    align-items: stretch;
-    min-height: 300px;
-  }
-  /* Alternate image side */
-  .what-panel:nth-child(even) {
-    grid-template-columns: 1fr 1.15fr;
-  }
-  .what-panel:nth-child(even) > :first-child { order: 2; }
-  .what-panel:nth-child(even) > figcaption { order: 1; }
+@media (min-width: 640px) {
+  .what-slideshow { aspect-ratio: 16 / 10; }
 }
 @media (min-width: 1024px) {
-  .what-panel { min-height: 360px; }
+  .what-slideshow { aspect-ratio: 16 / 8.5; margin-bottom: 64px; }
 }
 
-.what-panel figcaption {
-  padding: 18px 20px 22px;
+.what-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 900ms;
+}
+.what-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s;
+  z-index: 1;
+}
+
+.what-slide-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* gentle slow zoom on the active slide */
+  transform: scale(1.04);
+  transition: transform 5000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.what-slide.is-active .what-slide-bg {
+  transform: scale(1.0);
+}
+
+.what-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(43, 31, 20, 0.20) 0%,
+      rgba(43, 31, 20, 0.08) 40%,
+      rgba(43, 31, 20, 0.60) 75%,
+      rgba(43, 31, 20, 0.92) 100%);
+}
+
+.what-slide-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 24px 96px;
+  color: var(--bg);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  color: var(--text-muted);
-  font-size: 15px;
-  line-height: 1.5;
+  gap: 10px;
+  z-index: 2;
+  transform: translateY(16px);
+  opacity: 0;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 200ms,
+              opacity 700ms cubic-bezier(0.22, 1, 0.36, 1) 200ms;
+}
+.what-slide.is-active .what-slide-content {
+  transform: translateY(0);
+  opacity: 1;
 }
 @media (min-width: 768px) {
-  .what-panel figcaption {
-    padding: 40px;
-    font-size: clamp(16px, 1.3vw, 18px);
-    line-height: 1.55;
-  }
+  .what-slide-content { padding: 40px 48px 96px; gap: 14px; }
 }
 @media (min-width: 1024px) {
-  .what-panel figcaption { padding: 56px 48px; }
+  .what-slide-content { padding: 56px 64px 104px; }
 }
-.what-panel figcaption strong {
-  color: var(--text);
+
+.what-slide-step {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 11px;
   font-weight: 700;
-  display: block;
-  font-size: 19px;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: var(--yolk);
+  padding: 6px 12px;
   margin-bottom: 4px;
-  line-height: 1.2;
+}
+.what-slide-title {
+  font-size: clamp(26px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+  color: var(--bg);
+  margin: 0;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+  max-width: 840px;
+}
+.what-slide-sub {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: rgba(250, 247, 240, 0.92);
+  line-height: 1.5;
+  max-width: 600px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.45);
+  margin: 0;
+}
+
+/* Progress bar (auto-advance timer) */
+.what-slide-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(250, 247, 240, 0.12);
+  z-index: 3;
+  overflow: hidden;
+}
+.what-slide-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--yolk);
+  transition: width 100ms linear;
+  transform-origin: left;
+}
+
+/* Controls — dots + next */
+.what-slide-controls {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 24px;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
 }
 @media (min-width: 768px) {
-  .what-panel figcaption strong {
-    font-size: clamp(22px, 2.2vw, 30px);
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-    line-height: 1.15;
-  }
+  .what-slide-controls { left: 48px; right: 48px; bottom: 32px; }
+}
+@media (min-width: 1024px) {
+  .what-slide-controls { left: 64px; right: 64px; }
+}
+.what-slide-controls > * { pointer-events: auto; }
+
+.what-slide-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.what-slide-dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(250, 247, 240, 0.30);
+  cursor: pointer;
+  transition: background var(--t), width var(--t);
+  padding: 0;
+  border: 0;
+}
+.what-slide-dot:hover { background: rgba(250, 247, 240, 0.55); }
+.what-slide-dot.is-active {
+  background: var(--yolk);
+  width: 36px;
+}
+
+.what-slide-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px 11px;
+  border-radius: var(--radius-pill);
+  background: var(--yolk);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background var(--t), transform var(--t);
+  border: 0;
+}
+.what-slide-next:hover {
+  background: var(--yolk-dark);
+  transform: translateX(2px);
+}
+.what-slide-next:active { transform: translateX(0); }
+.what-slide-next-arrow { display: inline-block; transition: transform var(--t); }
+.what-slide-next:hover .what-slide-next-arrow { transform: translateX(2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .what-slide,
+  .what-slide-bg,
+  .what-slide-content,
+  .what-slide-progress-bar { transition: none !important; animation: none !important; }
+  .what-slide-bg { transform: scale(1) !important; }
 }
 
 .what-closing {

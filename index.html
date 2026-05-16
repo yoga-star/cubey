@@ -132,19 +132,51 @@
           <h2>Eggs, reimagined as a block.</h2>
         </header>
 
-        <div class="what-grid">
-          <figure class="what-panel">
-            <img class="what-image" src="images/what-1-block.jpg" alt="A golden block of cooked Cubey egg on a worn wooden cutting board with a small bowl of flaky sea salt beside it — the two ingredients on cream linen." width="1376" height="768" loading="lazy">
-            <figcaption><strong>A block of pure cooked egg.</strong> Two ingredients: egg, salt.</figcaption>
-          </figure>
-          <figure class="what-panel">
-            <img class="what-image" src="images/what-2-cubing.jpg" alt="Macro close-up of a chef's knife slicing through a golden Cubey egg block on a wooden board, with three perfectly uniform cubes already cut." width="1376" height="768" loading="lazy">
-            <figcaption><strong>Cube it any size, any shape.</strong> 1cm cubes for curry, slabs for sandwiches.</figcaption>
-          </figure>
-          <figure class="what-panel">
-            <img class="what-image" src="images/what-3-plate.jpg" alt="A white ceramic plate with steamed basmati rice, golden Cubey cubes, a katori of tempered yellow dal, and a small bowl of mango pickle with a lime wedge — top-down on a wooden table." width="1376" height="768" loading="lazy">
-            <figcaption><strong>Cook it the way you cook paneer.</strong> Holds its cube. Soaks the curry.</figcaption>
-          </figure>
+        <div class="what-slideshow" data-slideshow data-autoplay="3800" role="region" aria-roledescription="carousel" aria-label="How Cubey works">
+          <div class="what-slide is-active" data-slide-index="0" aria-roledescription="slide" aria-label="Step 1 of 3">
+            <img class="what-slide-bg" src="images/what-1-block.jpg" alt="A golden block of cooked Cubey egg on a worn wooden cutting board with a small bowl of flaky sea salt beside it." width="1376" height="768" loading="eager">
+            <div class="what-slide-overlay" aria-hidden="true"></div>
+            <div class="what-slide-content">
+              <span class="what-slide-step">Step&nbsp;01&nbsp;/&nbsp;03</span>
+              <h3 class="what-slide-title">A block of pure cooked egg.</h3>
+              <p class="what-slide-sub">Two ingredients: egg, salt.</p>
+            </div>
+          </div>
+
+          <div class="what-slide" data-slide-index="1" aria-roledescription="slide" aria-label="Step 2 of 3" aria-hidden="true">
+            <img class="what-slide-bg" src="images/what-2-cubing.jpg" alt="Macro close-up of a chef's knife slicing through a golden Cubey egg block, with uniform cubes already cut." width="1376" height="768" loading="lazy">
+            <div class="what-slide-overlay" aria-hidden="true"></div>
+            <div class="what-slide-content">
+              <span class="what-slide-step">Step&nbsp;02&nbsp;/&nbsp;03</span>
+              <h3 class="what-slide-title">Cube it any size, any shape.</h3>
+              <p class="what-slide-sub">1cm cubes for curry, slabs for sandwiches.</p>
+            </div>
+          </div>
+
+          <div class="what-slide" data-slide-index="2" aria-roledescription="slide" aria-label="Step 3 of 3" aria-hidden="true">
+            <img class="what-slide-bg" src="images/what-3-plate.jpg" alt="A white ceramic plate with rice, Cubey cubes, dal, and a wedge of lemon, top-down." width="1376" height="768" loading="lazy">
+            <div class="what-slide-overlay" aria-hidden="true"></div>
+            <div class="what-slide-content">
+              <span class="what-slide-step">Step&nbsp;03&nbsp;/&nbsp;03</span>
+              <h3 class="what-slide-title">Cook it the way you cook paneer.</h3>
+              <p class="what-slide-sub">Holds its cube. Soaks the curry.</p>
+            </div>
+          </div>
+
+          <div class="what-slide-progress" data-slide-progress aria-hidden="true">
+            <div class="what-slide-progress-bar"></div>
+          </div>
+
+          <div class="what-slide-controls">
+            <div class="what-slide-dots" role="tablist" aria-label="Choose a step">
+              <button class="what-slide-dot is-active" data-slide-go="0" aria-label="Go to step 1" aria-selected="true" type="button"></button>
+              <button class="what-slide-dot" data-slide-go="1" aria-label="Go to step 2" aria-selected="false" type="button"></button>
+              <button class="what-slide-dot" data-slide-go="2" aria-label="Go to step 3" aria-selected="false" type="button"></button>
+            </div>
+            <button class="what-slide-next" data-slide-next aria-label="Next step" type="button">
+              <span aria-hidden="true">Next&nbsp;<span class="what-slide-next-arrow">→</span></span>
+            </button>
+          </div>
         </div>
 
         <p class="what-closing">Same eggs you love. <span class="closing-em">None of the friction.</span></p>

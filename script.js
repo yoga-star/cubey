@@ -144,6 +144,116 @@
     }, 1600);
   }
 
+  /* ---------- "What it is" slideshow ---------- */
+  const slideshow = document.querySelector('[data-slideshow]');
+  if (slideshow) {
+    const slides = Array.from(slideshow.querySelectorAll('.what-slide'));
+    const dots = Array.from(slideshow.querySelectorAll('[data-slide-go]'));
+    const nextBtn = slideshow.querySelector('[data-slide-next]');
+    const progressBar = slideshow.querySelector('[data-slide-progress] > *');
+    const autoplayMs = parseInt(slideshow.dataset.autoplay, 10) || 3800;
+
+    let current = 0;
+    let autoTimer = null;
+    let progressTimer = null;
+    let progressStart = 0;
+
+    function setActive(index) {
+      const next = ((index % slides.length) + slides.length) % slides.length;
+      slides[current].classList.remove('is-active');
+      slides[current].setAttribute('aria-hidden', 'true');
+      if (dots[current]) {
+        dots[current].classList.remove('is-active');
+        dots[current].setAttribute('aria-selected', 'false');
+      }
+      current = next;
+      slides[current].classList.add('is-active');
+      slides[current].setAttribute('aria-hidden', 'false');
+      if (dots[current]) {
+        dots[current].classList.add('is-active');
+        dots[current].setAttribute('aria-selected', 'true');
+      }
+    }
+
+    function resetProgress() {
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        // force reflow then re-enable transition
+        // eslint-disable-next-line no-unused-expressions
+        progressBar.offsetWidth;
+        progressBar.style.transition = `width ${autoplayMs}ms linear`;
+        progressBar.style.width = '100%';
+      }
+    }
+
+    function startAuto() {
+      stopAuto();
+      progressStart = Date.now();
+      resetProgress();
+      autoTimer = window.setTimeout(function tick() {
+        setActive(current + 1);
+        resetProgress();
+        autoTimer = window.setTimeout(tick, autoplayMs);
+      }, autoplayMs);
+    }
+
+    function stopAuto() {
+      if (autoTimer) {
+        clearTimeout(autoTimer);
+        autoTimer = null;
+      }
+      if (progressBar) {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+      }
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        setActive(current + 1);
+        startAuto();
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        setActive(i);
+        startAuto();
+      });
+    });
+
+    // Pause on hover / focus, resume on leave
+    slideshow.addEventListener('mouseenter', stopAuto);
+    slideshow.addEventListener('mouseleave', startAuto);
+    slideshow.addEventListener('focusin', stopAuto);
+    slideshow.addEventListener('focusout', startAuto);
+
+    // Only start auto-advance when slideshow scrolls into view
+    if ('IntersectionObserver' in window) {
+      const visObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              startAuto();
+            } else {
+              stopAuto();
+            }
+          });
+        },
+        { threshold: 0.25 }
+      );
+      visObserver.observe(slideshow);
+    } else {
+      startAuto();
+    }
+
+    // Respect reduced-motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      stopAuto();
+    }
+  }
+
   /* ---------- Smooth scroll polish for anchor links ---------- */
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (e) => {
