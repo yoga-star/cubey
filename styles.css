@@ -606,15 +606,15 @@ body.founders-page { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-
   border-radius: var(--radius-card);
   overflow: hidden;
   isolation: isolate;
-  margin-bottom: 32px;
+  margin-bottom: 0;
   background: var(--text);
   box-shadow: var(--shadow-card);
 }
 @media (min-width: 640px) {
-  .what-slideshow { aspect-ratio: 16 / 10; margin-bottom: 40px; }
+  .what-slideshow { aspect-ratio: 16 / 10; }
 }
 @media (min-width: 1024px) {
-  .what-slideshow { aspect-ratio: 16 / 8.5; margin-bottom: 64px; }
+  .what-slideshow { aspect-ratio: 16 / 8.5; }
 }
 
 .what-slide {
