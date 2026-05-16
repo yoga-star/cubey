@@ -1399,77 +1399,63 @@ img.persona-image {
 }
 
 /* =============================================================
-   FRICTION COMPARISON
+   "THE CUBEY WAY" anchor card (lives inside the personas section)
    ============================================================= */
-.friction {
-  background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
-}
-.friction-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  align-items: stretch;
-}
-@media (min-width: 880px) {
-  .friction-grid {
-    grid-template-columns: 1fr auto 1fr;
-    gap: 0;
-  }
-}
-.friction-side {
+.cubey-way {
+  background: var(--yolk);
+  color: var(--text);
   border-radius: var(--radius-card);
-  padding: 32px 28px;
+  padding: 28px 24px;
+  margin-bottom: 32px;
   display: flex;
   flex-direction: column;
   gap: 24px;
   box-shadow: var(--shadow-card);
-  min-height: 360px;
+}
+@media (min-width: 768px) {
+  .cubey-way {
+    padding: 40px 36px;
+    margin-bottom: 40px;
+    gap: 32px;
+  }
 }
 @media (min-width: 1024px) {
-  .friction-side { padding: 48px 44px; gap: 32px; min-height: 420px; }
+  .cubey-way {
+    padding: 48px 44px;
+    margin-bottom: 48px;
+  }
 }
-.friction-side--old {
-  background: var(--text);
-  color: var(--bg);
-}
-.friction-side--new {
-  background: var(--yolk);
-  color: var(--text);
-}
-.friction-tag {
+.cubey-way-tag {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   opacity: 0.7;
 }
-.friction-list {
+.cubey-way-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  flex: 1;
 }
-.friction-list li {
-  font-size: clamp(20px, 2.4vw, 28px);
+@media (min-width: 768px) {
+  .cubey-way-list {
+    flex-direction: row;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+}
+.cubey-way-list li {
+  font-size: clamp(20px, 2.2vw, 28px);
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
   position: relative;
   padding-left: 30px;
 }
-.friction-side--old .friction-list li::before {
-  content: '✕';
-  position: absolute;
-  left: 0;
-  color: rgba(250, 247, 240, 0.4);
-  font-weight: 400;
-  font-size: 0.7em;
-  top: 0.2em;
-}
-.friction-side--new .friction-list li::before {
+.cubey-way-list li::before {
   content: '→';
   position: absolute;
   left: 0;
@@ -1477,41 +1463,25 @@ img.persona-image {
   font-weight: 600;
   top: 0;
 }
-.friction-stats {
+.cubey-way-stats {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: baseline;
+  gap: 20px;
   padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(43, 31, 20, 0.15);
+  flex-wrap: wrap;
 }
-.friction-side--new .friction-stats {
-  border-color: rgba(43, 31, 20, 0.15);
-}
-.friction-time {
-  font-size: clamp(36px, 4.5vw, 56px);
+.cubey-way-time {
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1;
 }
-.friction-extra {
+.cubey-way-extra {
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
   opacity: 0.7;
-}
-.friction-divider {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 0;
-}
-@media (min-width: 880px) {
-  .friction-divider { padding: 0 20px; }
 }
 
 /* =============================================================
