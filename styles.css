@@ -1221,12 +1221,19 @@ img.persona-image {
   inset: 0;
   z-index: 1;
   background:
+    /* heavier wash at the bottom where the text sits */
     linear-gradient(180deg,
-      rgba(43, 31, 20, 0.55) 0%,
-      rgba(43, 31, 20, 0.20) 28%,
-      rgba(43, 31, 20, 0.45) 60%,
-      rgba(43, 31, 20, 0.92) 100%),
-    radial-gradient(ellipse at 70% 30%, rgba(244, 196, 48, 0.10), transparent 60%);
+      rgba(43, 31, 20, 0.65) 0%,
+      rgba(43, 31, 20, 0.50) 30%,
+      rgba(43, 31, 20, 0.80) 60%,
+      rgba(43, 31, 20, 0.96) 100%),
+    /* localised dark wash directly behind the copy block */
+    linear-gradient(180deg,
+      transparent 0%,
+      transparent 45%,
+      rgba(43, 31, 20, 0.35) 70%,
+      rgba(43, 31, 20, 0.55) 100%),
+    radial-gradient(ellipse at 70% 25%, rgba(244, 196, 48, 0.08), transparent 60%);
 }
 .prologue-grain {
   position: absolute;
@@ -1279,14 +1286,14 @@ img.persona-image {
   line-height: 1.04;
   color: var(--bg);
   max-width: 920px;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6), 0 0 8px rgba(0, 0, 0, 0.35);
 }
 .prologue-body {
   font-size: clamp(17px, 1.5vw, 21px);
-  color: rgba(250, 247, 240, 0.88);
+  color: rgba(250, 247, 240, 0.95);
   line-height: 1.55;
   max-width: 560px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.55), 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .prologue-pivot {
   font-size: clamp(20px, 2vw, 26px);
@@ -1296,7 +1303,7 @@ img.persona-image {
   line-height: 1.35;
   margin-top: 8px;
   max-width: 720px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.55), 0 0 6px rgba(0, 0, 0, 0.3);
 }
 .prologue-pivot em {
   color: var(--yolk);
