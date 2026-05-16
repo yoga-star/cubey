@@ -900,14 +900,11 @@ body.founders-page { background: linear-gradient(180deg, var(--bg) 0%, var(--bg-
    ============================================================= */
 .persona-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 @media (min-width: 560px) {
-  .persona-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+  .persona-grid { gap: 20px; }
 }
 @media (min-width: 1024px) {
   .persona-grid { gap: 24px; }
